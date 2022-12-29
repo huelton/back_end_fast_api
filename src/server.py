@@ -20,7 +20,7 @@ app.add_middleware(
 
 #classe Animal
 class Animal(BaseModel):
-    id: Optional[str]
+    id: Optional[str] # Optional deixa livre, nao precisa encaminhar essa informacao no request body
     nome: str
     idade: int
     sexo: str
@@ -39,7 +39,7 @@ def listar_animais():
 def obter_animal(animal_id: str):
   for animal in banco: #Busca na lista
       if animal.id == animal_id: # Se encontra o id do parametro retorna o objeto animal
-          return animal
+         return animal
   return { "mensagem": f'ID {animal_id} do Animal nao encontrado'} # caso nao encontre o objeto retorna nao encontrado
 
 #INSERE os dados de Animal dentro do BANCO DE DADOS FAKE
@@ -59,7 +59,7 @@ def remove_animal(animal_id: str):
          break # nao percorre mais o for
 
   if posicao != -1:
-      banco.pop(posicao)
+      banco.pop(posicao) # remove o objeto  da lista (banco fake) da posicao encontrada
       return { "mensagem": f'ID {animal_id} do Animal removido com sucesso'} # caso encontre o objeto retorna o id deletado
   else:
       return { "mensagem": "Animal nao encontrado"} # caso nao encontre o objeto retorna nao encontrado
