@@ -6,8 +6,10 @@ from uuid import uuid4
 
 app = FastAPI()
 
+#URLS LIBERADAS PELO CORS para acesssar a API, devem estar dentro dessa lista
 origins = ['http://127.0.0.1:5500']
 
+#Codigo para liberacao das URLs
 app.add_middleware(
   CORSMiddleware,
   allow_origins=origins,
